@@ -104,9 +104,9 @@ function ItemCard({ item, idx, setItemInfo, setItems }: ItemCardProps) {
 
             const calculatedPrice =
                 (Number(item[ItemInfo.Price]) +
-                    Number(item[ItemInfo.Shipping] || 0)) /
+                    Number(item[ItemInfo.Shipping] ?? 0)) /
                 (Number(item[ItemInfo.Volume]) *
-                    Number(item[ItemInfo.Qty] || 1));
+                    Number(item[ItemInfo.Qty] ?? 1));
 
             if (isNaN(calculatedPrice)) return;
 
@@ -114,7 +114,12 @@ function ItemCard({ item, idx, setItemInfo, setItems }: ItemCardProps) {
         }, 300);
 
         return () => clearTimeout(timeoutId);
-    }, [idx, item, setItemInfo]);
+    }, [
+        item[ItemInfo.Price],
+        item[ItemInfo.Volume],
+        item[ItemInfo.Qty],
+        item[ItemInfo.Shipping],
+    ]);
 
     return (
         <Card className={item.isCheapest ? 'item-card-cheapest' : ''}>
