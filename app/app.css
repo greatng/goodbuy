@@ -11,3 +11,7 @@ body {
 		color-scheme: dark;
 	}
 }
+
+.item-card-cheapest {
+	background-color: var(--grass-a8);
+}
