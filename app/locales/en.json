@@ -1,0 +1,43 @@
+{
+	"Item Name": "Item Name",
+	"Volume": "Weight or Volume",
+	"Price": "Price",
+	"Quantity": "Quantity",
+	"Price per unit": "Price per unit",
+	"Add Item": "Add Item",
+	"Reset": "Reset",
+	"Language": "Language",
+	"Shipping Cost": "Shipping Cost",
+	"Close": "Close",
+	"instructions": {
+		"title": "How to Use the Unit Price Calculator App",
+		"description": "This app helps calculate the unit price of a product by comparing the quantity received with the money spent, making it easier to choose the best deal.",
+		"steps": {
+			"step_1": {
+				"title": "Enter Product Details for Comparison",
+				"details": "You may enter the product name (optional) and input the quantity of the product (if applicable)."
+			},
+			"step_2": {
+				"title": "Enter Volume/Weight and Price",
+				"details": "Input the product’s weight or volume per unit (for weight/volume-based products) and enter the total price paid (required)."
+			},
+			"step_3": {
+				"title": "(Optional) Enter Shipping Cost",
+				"details": "If there is a shipping fee, include it for more accurate calculations."
+			},
+			"step_4": {
+				"title": "View Unit Price Calculation",
+				"details": "The app calculates the unit price using the formula: (Price + Shipping Cost) / (Weight or Volume * Quantity)."
+			},
+			"step_5": {
+				"title": "Compare Multiple Items",
+				"details": "Click 'Add Item' to input another product for comparison."
+			},
+			"step_6": {
+				"title": "Reset Data",
+				"details": "Click 'Reset' to clear all fields and start over."
+			}
+		},
+		"note": "You don’t need to fill in every field—just enter the relevant data for comparison!"
+	}
+}
