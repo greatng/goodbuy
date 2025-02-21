@@ -103,8 +103,10 @@ function ItemCard({ item, idx, setItemInfo, setItems }: ItemCardProps) {
             if (!item[ItemInfo.Price] || !item[ItemInfo.Volume]) return;
 
             const calculatedPrice =
-                (item[ItemInfo.Price] + (item[ItemInfo.Shipping] || 0)) /
-                (item[ItemInfo.Volume] * (item[ItemInfo.Qty] || 1));
+                (Number(item[ItemInfo.Price]) +
+                    Number(item[ItemInfo.Shipping] || 0)) /
+                (Number(item[ItemInfo.Volume]) *
+                    Number(item[ItemInfo.Qty] || 1));
 
             if (isNaN(calculatedPrice)) return;
 
