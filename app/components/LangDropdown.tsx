@@ -2,19 +2,18 @@
 
 import { Button, DropdownMenu } from '@radix-ui/themes';
 import { useTranslation } from 'react-i18next';
-import { usePersistentState } from '../hooks/usePersistentState';
-import '../i18n';
+import { useEffect, useState } from 'react';
 
 function LangDropdown() {
-    const [currentLanguage, setCurrentLanguage] = usePersistentState(
-        'current-language',
-        'th'
-    );
     const { t, i18n } = useTranslation();
-    const handleChangeLanguage = (lang: string) => {
+    const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
+    const handleChangeLanguage = (lang: 'th-TH' | 'en-US') => {
         setCurrentLanguage(lang);
-        i18n.changeLanguage(lang);
     };
+
+    useEffect(() => {
+        i18n.changeLanguage(currentLanguage);
+    }, [currentLanguage]);
 
     return (
         <DropdownMenu.Root>
@@ -25,10 +24,14 @@ function LangDropdown() {
                 </Button>
             </DropdownMenu.Trigger>
             <DropdownMenu.Content>
-                <DropdownMenu.Item onClick={() => handleChangeLanguage('th')}>
+                <DropdownMenu.Item
+                    onClick={() => handleChangeLanguage('th-TH')}
+                >
                     ไทย
                 </DropdownMenu.Item>
-                <DropdownMenu.Item onClick={() => handleChangeLanguage('en')}>
+                <DropdownMenu.Item
+                    onClick={() => handleChangeLanguage('en-US')}
+                >
                     English
                 </DropdownMenu.Item>
             </DropdownMenu.Content>
