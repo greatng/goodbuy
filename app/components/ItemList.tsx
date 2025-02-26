@@ -1,10 +1,11 @@
 'use client';
 
-import { Button, Flex } from '@radix-ui/themes';
+import { Box, Button, Flex } from '@radix-ui/themes';
 import ItemCard, { ItemInfo } from './ItemCard';
 import { useTranslation } from 'react-i18next';
 import { usePersistentState } from '../hooks/usePersistentState';
 import type { FormEvent } from 'react';
+import ControlButtons from './ControlButtons';
 
 export type Item = {
     [ItemInfo.Name]?: string;
@@ -65,7 +66,7 @@ function ItemList() {
 
     return (
         <>
-            <Flex direction="column" gap="4" my="4">
+            <Flex direction="column" gap="4" mb="40px" mt="4">
                 {items?.map((item, idx) => (
                     <ItemCard
                         key={idx}
@@ -76,12 +77,9 @@ function ItemList() {
                     />
                 ))}
             </Flex>
-            <Flex direction="row" gap="2" justify={'center'}>
-                <Button onClick={(e) => addItem(e)}>{t('Add Item')}</Button>
-                <Button onClick={(e) => resetItems(e)} variant="soft">
-                    {t('Reset')}
-                </Button>
-            </Flex>
+            <Box position="fixed" bottom="2" left="0" width="100%">
+                <ControlButtons addItem={addItem} resetItems={resetItems} />
+            </Box>
         </>
     );
 }
