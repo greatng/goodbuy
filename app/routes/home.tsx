@@ -8,7 +8,7 @@ import '../i18n';
 
 export function meta({}: Route.MetaArgs) {
     return [
-        { title: 'Goodbuy !' },
+        { title: 'Goodbuy !, "Goodbye" to overpaying!' },
         { name: 'description', content: '"Goodbye" to overpaying!' },
     ];
 }
