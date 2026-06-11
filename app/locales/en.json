@@ -1,43 +1,43 @@
 {
-	"Item Name": "Item Name",
-	"Volume": "Weight or Volume",
+	"Item Name": "Product name",
+	"Volume": "Weight / volume",
 	"Price": "Price",
 	"Quantity": "Quantity",
-	"Price per unit": "Price per unit",
-	"Add Item": "Add Item",
-	"Reset": "Reset",
+	"Price per unit": "Unit price",
+	"Add Item": "Add product",
+	"Reset": "Clear all",
 	"Language": "Language",
-	"Shipping Cost": "Shipping Cost",
+	"Shipping Cost": "Shipping cost",
 	"Close": "Close",
 	"instructions": {
-		"title": "How to Use the Unit Price Calculator App",
-		"description": "This app helps calculate the unit price of a product by comparing the quantity received with the money spent, making it easier to choose the best deal.",
+		"title": "How to use Goodbuy",
+		"description": "Compare item unit prices side by side so you can quickly spot the best value.",
 		"steps": {
 			"step_1": {
-				"title": "Enter Product Details for Comparison",
-				"details": "You may enter the product name (optional) and input the quantity of the product (if applicable)."
+				"title": "Name the product",
+				"details": "Enter the product name if you want to keep comparisons easy to read."
 			},
 			"step_2": {
-				"title": "Enter Volume/Weight and Price",
-				"details": "Input the product’s weight or volume per unit (for weight/volume-based products) and enter the total price paid (required)."
+				"title": "Add weight or volume and price",
+				"details": "Enter the total price and the product’s weight or volume so the app can calculate unit cost."
 			},
 			"step_3": {
-				"title": "(Optional) Enter Shipping Cost",
-				"details": "If there is a shipping fee, include it for more accurate calculations."
+				"title": "Include shipping if needed",
+				"details": "Add shipping cost for a more accurate total unit price."
 			},
 			"step_4": {
-				"title": "View Unit Price Calculation",
-				"details": "The app calculates the unit price using the formula: (Price + Shipping Cost) / (Weight or Volume * Quantity)."
+				"title": "Review the unit price",
+				"details": "Goodbuy shows your unit price using: (Price + Shipping) / (Volume * Quantity)."
 			},
 			"step_5": {
-				"title": "Compare Multiple Items",
-				"details": "Click 'Add Item' to input another product for comparison."
+				"title": "Compare more products",
+				"details": "Use 'Add product' to enter another item and compare values."
 			},
 			"step_6": {
-				"title": "Reset Data",
-				"details": "Click 'Reset' to clear all fields and start over."
+				"title": "Start fresh",
+				"details": "Use 'Clear all' to reset the fields and begin again."
 			}
 		},
-		"note": "You don’t need to fill in every field—just enter the relevant data for comparison!"
+		"note": "You don’t need every field — just enter what you know to compare items faster."
 	}
 }

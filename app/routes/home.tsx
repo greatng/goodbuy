@@ -2,6 +2,7 @@ import type { Route } from './+types/home';
 import '@radix-ui/themes/styles.css';
 import { Box, Container, Theme } from '@radix-ui/themes';
 import ItemList from '../components/ItemList';
+import UnitConversionHelper from '../components/UnitConversionHelper';
 import { usePersistentState } from '../hooks/usePersistentState';
 import GuideCard from '../components/GuideCard';
 import '../i18n';
@@ -16,7 +17,7 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
     const [isDarkMode, setIsDarkMode] = usePersistentState(
         'is-dark-mode',
-        true
+        true,
     );
 
     return (
@@ -34,6 +35,7 @@ export default function Home() {
                     />
                     <ItemList />
                 </Container>
+                <UnitConversionHelper />
             </Box>
         </Theme>
     );
