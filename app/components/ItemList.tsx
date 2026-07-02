@@ -27,7 +27,10 @@ export const ITEM_PROPERTIES = [
     ItemInfo.Shipping,
 ];
 
-const ITEMS_DEFAULT = [{}, {}] as Item[];
+const ITEMS_DEFAULT = [
+    { qty: 1, volume: 1 },
+    { qty: 1, volume: 1 },
+] as Item[];
 
 function ItemList() {
     const { t } = useTranslation();
@@ -73,7 +76,7 @@ function ItemList() {
     const addItem = (e: FormEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
-        setItems((prev) => [...prev, {}] as Item[]);
+        setItems((prev) => [...prev, { qty: 1, volume: 1 }] as Item[]);
     };
 
     const resetItems = (e: FormEvent<HTMLButtonElement>) => {

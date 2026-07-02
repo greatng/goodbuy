@@ -87,10 +87,21 @@ function ItemCard({
     setItems,
 }: ItemCardProps) {
     const { t } = useTranslation();
-    const buildText = (key: ItemInfo) =>
-        `${t(ITEM_PROP_CONFIG[key].name)} ${
-            item[key] || (key === ItemInfo.Qty ? 1 : 0)
-        }`;
+    const getDisplayValue = (value: string | number, key: ItemInfo) => {
+        if (value === '' || value == null) {
+            return key === ItemInfo.Qty || key === ItemInfo.Volume ? 1 : '';
+        }
+
+        return value;
+    };
+    const buildText = (key: ItemInfo) => {
+        const fallbackValue =
+            key === ItemInfo.Qty || key === ItemInfo.Volume ? 1 : 0;
+        const resolvedValue =
+            item[key] === '' || item[key] == null ? fallbackValue : item[key];
+
+        return `${t(ITEM_PROP_CONFIG[key].name)} ${resolvedValue}`;
+    };
     const handleChange = (
         key: ItemInfo,
         value: string | number,
@@ -98,7 +109,13 @@ function ItemCard({
     ) => {
         e.preventDefault();
 
-        setItemInfo(idx, key, value);
+        const normalizedValue =
+            (key === ItemInfo.Qty || key === ItemInfo.Volume) &&
+            (value === '' || value == null)
+                ? 1
+                : value;
+
+        setItemInfo(idx, key, normalizedValue);
     };
 
     const handleRemove = () => {
@@ -116,7 +133,7 @@ function ItemCard({
             const calculatedPrice =
                 (Number(item[ItemInfo.Price]) +
                     Number(item[ItemInfo.Shipping] ?? 0)) /
-                (Number(item[ItemInfo.Volume]) *
+                (Number(item[ItemInfo.Volume] ?? 1) *
                     Number(item[ItemInfo.Qty] ?? 1));
 
             if (isNaN(calculatedPrice)) return;
@@ -219,7 +236,10 @@ function ItemCard({
                             <InputItem
                                 key={itemKey}
                                 itemKey={itemKey}
-                                value={item[itemKey] ?? ''}
+                                value={getDisplayValue(
+                                    item[itemKey] ?? '',
+                                    itemKey,
+                                )}
                                 cb={handleChange}
                             />
                         ),
