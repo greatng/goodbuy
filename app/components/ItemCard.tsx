@@ -87,8 +87,11 @@ function ItemCard({
     setItems,
 }: ItemCardProps) {
     const { t } = useTranslation();
-    const getDisplayValue = (value: string | number, key: ItemInfo) => {
-        if (value === '' || value == null) {
+    const getDisplayValue = (
+        value: string | number | undefined,
+        key: ItemInfo,
+    ) => {
+        if (value == null) {
             return key === ItemInfo.Qty || key === ItemInfo.Volume ? 1 : '';
         }
 
@@ -105,17 +108,9 @@ function ItemCard({
     const handleChange = (
         key: ItemInfo,
         value: string | number,
-        e: ChangeEvent,
+        _e: ChangeEvent,
     ) => {
-        e.preventDefault();
-
-        const normalizedValue =
-            (key === ItemInfo.Qty || key === ItemInfo.Volume) &&
-            (value === '' || value == null)
-                ? 1
-                : value;
-
-        setItemInfo(idx, key, normalizedValue);
+        setItemInfo(idx, key, value);
     };
 
     const handleRemove = () => {
