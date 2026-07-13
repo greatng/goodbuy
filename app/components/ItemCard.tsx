@@ -14,6 +14,7 @@ import {
     type Dispatch,
     type SetStateAction,
     useEffect,
+    useMemo,
 } from 'react';
 import { type Item, ITEM_PROPERTIES } from './ItemList';
 import { useTranslation } from 'react-i18next';
@@ -121,22 +122,15 @@ function ItemCard({
         });
     };
 
-    useEffect(() => {
-        const timeoutId = setTimeout(() => {
-            if (!item[ItemInfo.Price] || !item[ItemInfo.Volume]) return;
+    const perUnit = useMemo(() => {
+        const price = Number(item[ItemInfo.Price] ?? 0);
+        const shipping = Number(item[ItemInfo.Shipping] ?? 0);
+        const volume = Number(item[ItemInfo.Volume] ?? 1);
+        const qty = Number(item[ItemInfo.Qty] ?? 1);
 
-            const calculatedPrice =
-                (Number(item[ItemInfo.Price]) +
-                    Number(item[ItemInfo.Shipping] ?? 0)) /
-                (Number(item[ItemInfo.Volume] ?? 1) *
-                    Number(item[ItemInfo.Qty] ?? 1));
+        if (!price) return 0;
 
-            if (isNaN(calculatedPrice)) return;
-
-            setItemInfo(idx, ItemInfo.PerUnit, calculatedPrice);
-        }, 300);
-
-        return () => clearTimeout(timeoutId);
+        return (price + shipping) / (volume * qty);
     }, [
         item[ItemInfo.Price],
         item[ItemInfo.Volume],
@@ -144,9 +138,14 @@ function ItemCard({
         item[ItemInfo.Shipping],
     ]);
 
+    useEffect(() => {
+        if (!Number.isFinite(perUnit)) return;
+        setItemInfo(idx, ItemInfo.PerUnit, perUnit);
+    }, [idx, perUnit, setItemInfo]);
+
     const topRank = (item as any).topRank as number | undefined;
     const perUnitValue = Number(item[ItemInfo.PerUnit]);
-    const itemUnit = String(item[ItemInfo.Unit] ?? 'pcs');
+    const itemUnit = String(item[ItemInfo.Unit] || 'pcs');
     const hasValidPerUnit = isFinite(perUnitValue) && perUnitValue > 0;
     const hasCheapestValue = Number.isFinite(cheapestUnitPrice ?? NaN);
     const savingsPercent =
