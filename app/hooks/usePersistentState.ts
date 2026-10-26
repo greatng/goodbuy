@@ -4,32 +4,35 @@ import { useState, useEffect } from 'react';
 
 export function usePersistentState<Type>(
     key: string,
-    initialState: Type | (() => Type)
+    initialState: Type | (() => Type),
+    validate?: (value: unknown) => boolean,
 ): [Type, React.Dispatch<React.SetStateAction<Type>>] {
     const prefixedKey = 'use-persistent-state-' + key;
-    const isLocalStorageAvailable =
-        typeof window !== 'undefined' && window.localStorage;
+    // Match the server's initial render before restoring browser preferences.
+    const [value, setValue] = useState<Type>(initialState);
+    const [loadedKey, setLoadedKey] = useState<string | null>(null);
 
-    // read key from local storage if not found use default value
-    const [value, setValue] = useState<Type>(() => {
-        const storedValue = isLocalStorageAvailable
-            ? localStorage.getItem(prefixedKey)
-            : null;
-        if (storedValue === null) {
-            if (typeof initialState === 'function') {
-                return (initialState as () => Type)();
-            } else {
-                return initialState;
-            }
-        } else {
-            return JSON.parse(storedValue);
-        }
-    });
-    // update local storage when value changes
     useEffect(() => {
-        localStorage.setItem(prefixedKey, JSON.stringify(value));
-    }, [value, prefixedKey]);
+        try {
+            const stored = window.localStorage.getItem(prefixedKey);
+            if (stored !== null) {
+                const parsed: unknown = JSON.parse(stored);
+                if (!validate || validate(parsed)) setValue(parsed as Type);
+            }
+        } catch {
+            // Storage may be unavailable or contain an incomplete saved value.
+        }
+        setLoadedKey(prefixedKey);
+    }, [prefixedKey, validate]);
+
+    useEffect(() => {
+        if (loadedKey !== prefixedKey) return;
+        try {
+            window.localStorage.setItem(prefixedKey, JSON.stringify(value));
+        } catch {
+            // Comparisons still work when browser storage is blocked or full.
+        }
+    }, [value, prefixedKey, loadedKey]);
 
     return [value, setValue];
 }
-
