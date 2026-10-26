@@ -1,43 +1,83 @@
 {
-	"Item Name": "Product name",
-	"Volume": "Weight / volume",
-	"Price": "Price",
-	"Quantity": "Quantity",
-	"Price per unit": "Unit price",
-	"Add Item": "Add product",
-	"Reset": "Clear all",
-	"Language": "Language",
-	"Shipping Cost": "Shipping cost",
-	"Close": "Close",
-	"instructions": {
-		"title": "How to use Goodbuy",
-		"description": "Compare item unit prices side by side so you can quickly spot the best value.",
-		"steps": {
-			"step_1": {
-				"title": "Name the product",
-				"details": "Enter the product name if you want to keep comparisons easy to read."
-			},
-			"step_2": {
-				"title": "Add weight or volume and price",
-				"details": "Enter the total price and the product’s weight or volume so the app can calculate unit cost."
-			},
-			"step_3": {
-				"title": "Include shipping if needed",
-				"details": "Add shipping cost for a more accurate total unit price."
-			},
-			"step_4": {
-				"title": "Review the unit price",
-				"details": "Goodbuy shows your unit price using: (Price + Shipping) / (Volume * Quantity)."
-			},
-			"step_5": {
-				"title": "Compare more products",
-				"details": "Use 'Add product' to enter another item and compare values."
-			},
-			"step_6": {
-				"title": "Start fresh",
-				"details": "Use 'Clear all' to reset the fields and begin again."
-			}
-		},
-		"note": "You don’t need every field — just enter what you know to compare items faster."
-	}
+  "Item Name": "Product name",
+  "Volume": "Size per item",
+  "Price": "Total price",
+  "Quantity": "Number of items",
+  "Price per unit": "Unit price",
+  "Add Item": "Add product",
+  "Reset": "Clear all",
+  "Language": "Language",
+  "Shipping Cost": "Shipping (optional)",
+  "Close": "Close",
+  "instructions": {
+    "title": "How to compare prices",
+    "description": "Compare the same kind of product to find the lowest price per unit.",
+    "steps": {
+      "step_1": {
+        "title": "Name each option",
+        "details": "Add a name to tell products apart. This is optional."
+      },
+      "step_2": {
+        "title": "Enter the total price and size",
+        "details": "Use the price for the whole pack. Enter the size and unit of one item, then the number of items in the pack."
+      },
+      "step_3": {
+        "title": "Add shipping if needed",
+        "details": "Enter shipping for the whole pack, or leave it at 0."
+      },
+      "step_4": {
+        "title": "Look for the lowest unit price",
+        "details": "Compare the price per 100 g, per 100 ml, or per item. Shipping is included. The lowest unit price is highlighted."
+      },
+      "step_5": {
+        "title": "Add another option",
+        "details": "Choose “Add product” to compare more options."
+      },
+      "step_6": {
+        "title": "Start a new comparison",
+        "details": "Choose “Clear all” to remove your entries and start again."
+      }
+    },
+    "note": "Compare the same kind of product in one currency. Grams and kilograms convert automatically, as do ml and litres. Weight, volume, and item counts cannot be compared with each other."
+  },
+  "Unit": "Unit",
+  "Compare prices": "Compare prices",
+  "Find the best value": "Compare prices, find the lowest",
+  "Enter the price and size of each product. The lowest unit price wins.": "Enter the price and size of each product. The lowest unit price wins.",
+  "Use the same currency and unit for every product (for example, grams or ml).": "Compare the same kind of product in one currency. Grams and kilograms convert automatically, as do ml and litres. Weight, volume, and item counts cannot be compared with each other.",
+  "Product": "Product",
+  "Best value": "Lowest unit price",
+  "Enter a price to compare": "Enter a price to compare",
+  "More options": "More options",
+  "Price for the whole pack": "Price for the whole pack",
+  "Size of each item": "Size of each item",
+  "Items in the pack": "Items in the pack",
+  "Shipping (optional)": "Shipping (optional)",
+  "Remove product": "Remove product",
+  "Clear all products?": "Clear all products?",
+  "This will remove your saved comparison.": "This will remove your saved comparison.",
+  "Cancel": "Cancel",
+  "Clear all": "Clear all",
+  "Add at least two prices to compare.": "Add at least two prices to compare.",
+  "Results update as you type.": "Results update as you type.",
+  "Dark mode": "Dark mode",
+  "How it works": "How it works",
+  "Enter positive values for price, size and quantity.": "Enter positive values for price, size and quantity.",
+  "Optional name": "Optional name",
+  "per unit": "per unit",
+  "More than the best value": "More than the lowest unit price",
+  "Currency": "Currency",
+  "item": "item",
+  "g": "g",
+  "kg": "kg",
+  "ml": "ml",
+  "l": "l",
+  "per item": "per item",
+  "per 100 g": "per 100 g",
+  "per 100 ml": "per 100 ml",
+  "Lowest unit price": "Lowest unit price",
+  "More than the lowest unit price": "More than the lowest unit price",
+  "Choose matching units: compare weights, volumes, or item counts.": "Choose matching units: compare weights, volumes, or item counts.",
+  "Choose a unit for each product. Grams and kilograms (or ml and litres) are converted automatically.": "Choose a unit for each product. Grams and kilograms (or ml and litres) are converted automatically.",
+  "Currency applies to all prices. Changing it does not convert amounts.": "Currency applies to all prices. Changing it does not convert amounts."
 }

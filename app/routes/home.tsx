@@ -2,7 +2,6 @@ import type { Route } from './+types/home';
 import '@radix-ui/themes/styles.css';
 import { Box, Container, Theme } from '@radix-ui/themes';
 import ItemList from '../components/ItemList';
-import UnitConversionHelper from '../components/UnitConversionHelper';
 import { usePersistentState } from '../hooks/usePersistentState';
 import GuideCard from '../components/GuideCard';
 import '../i18n';
@@ -17,7 +16,7 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
     const [isDarkMode, setIsDarkMode] = usePersistentState(
         'is-dark-mode',
-        true,
+        false,
     );
 
     return (
@@ -28,14 +27,14 @@ export default function Home() {
             panelBackground="translucent"
         >
             <Box minHeight={'100vh'} p="2">
-                <Container size="1">
+                <Container size="3">
                     <GuideCard
                         isDarkMode={isDarkMode}
                         setIsDarkMode={setIsDarkMode}
                     />
                     <ItemList />
                 </Container>
-                <UnitConversionHelper />
+
             </Box>
         </Theme>
     );
